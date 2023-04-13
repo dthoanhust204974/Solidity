@@ -17,5 +17,6 @@ contract PaymentReceived{
     {
         from = _from;
         amount=_amount;
+        
     }
 }
