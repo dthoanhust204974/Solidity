@@ -20,14 +20,13 @@ contract Week2 {
     constructor(
         string memory _name,
         string memory _symbol,
-        uint256 _totalSupply,
-        address _owner
+        uint256 _totalSupply
     ) {
         name = _name;
         symbol = _symbol;
         totalSupply = _totalSupply;
-        balances[_owner] = _totalSupply;
-        owner = _owner;
+        owner = payable(msg.sender);
+        balances[owner] = _totalSupply;   
     }
 
     function getBalances() public view returns (uint256) {
