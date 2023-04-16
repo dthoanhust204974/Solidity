@@ -2,31 +2,40 @@
 
 pragma solidity ^0.8.0;
 
-contract Week2 {
-    string private name;
-    string private symbol;
-    uint256 private totalSupply;
-    mapping(address => uint256) private balances;
-    mapping(address => mapping(address => uint256)) private allowances;
-    bool private locked;
-    address private owner;
-
-    modifier onlyOwner() {
+contract Owner{
+    address owner;
+    constructor()
+    {
+        owner = msg.sender;
+    }
+    modifier onlyOwner()
+    {
         require(msg.sender == owner, "Not Allowed");
         _;
     }
+}
+
+contract Week2 is Owner{
+    string private name;
+    string private symbol;
+    uint256 private totalSupply;
+    uint tokenPrice;
+    mapping(address => uint256) private balances;
+    mapping(address => mapping(address => uint256)) private allowances;
+    bool private locked;
 
     // Khoi tao token
     constructor(
         string memory _name,
         string memory _symbol,
-        uint256 _totalSupply
+        uint256 _totalSupply,
+        uint256 _tokenPrice
     ) {
         name = _name;
         symbol = _symbol;
         totalSupply = _totalSupply;
-        owner = payable(msg.sender);
-        balances[owner] = _totalSupply;   
+        tokenPrice = _tokenPrice;
+        balances[owner] = _totalSupply;
     }
 
     function getBalances() public view returns (uint256) {
@@ -91,5 +100,16 @@ contract Week2 {
     // Dinh danh owner, doi owner
     function swapOwner(address _newOwner) public onlyOwner {
         owner = _newOwner;
+    }
+
+    // Purchase Token
+    function purchaseToken() public payable {
+        require(!locked, "Token is locked");
+        require(
+            balances[owner] * tokenPrice >= msg.value,
+            "not enough balance"
+        );
+        balances[owner] -= msg.value / tokenPrice;
+        balances[msg.sender] += msg.value / tokenPrice;
     }
 }
