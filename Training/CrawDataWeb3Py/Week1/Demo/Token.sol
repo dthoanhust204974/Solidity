@@ -119,5 +119,6 @@ contract Week2 is Owner{
         balances[msg.sender] += msg.value / tokenPrice;
         
         emit Purchase(msg.sender, msg.value / tokenPrice);
+        
     }
 }
