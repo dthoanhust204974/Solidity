@@ -1,0 +1,65 @@
+{
+  "blocksInfo": {
+    "startBlock": 0,
+    "endBlock": 5
+  },
+  "transferEvents": [
+    {
+      "args": {
+        "_from": "0xCE0453652a2B46f157200b83aE09A3D476876060",
+        "_to": "0xED8836eCec067e130EB453CE2F123d2e106a970a",
+        "_amount": 1
+      },
+      "event": "Transfer",
+      "logIndex": 0,
+      "transactionIndex": 0,
+      "transactionHash": "0x00cebb153f71d51e753db72820bf854ea94500d983636c50b7f5ef294db4c6b3",
+      "address": "0xCA954a230176E8EE83a2a4e24140264Ffd74EA5C",
+      "blockHash": "0xd35f07d4b6ea948ece4aec2758fb3d0bb4dd32c802ea86339745a0854fdceb2b",
+      "blockNumber": 4
+    },
+    {
+      "args": {
+        "_from": "0xED8836eCec067e130EB453CE2F123d2e106a970a",
+        "_to": "0xCE0453652a2B46f157200b83aE09A3D476876060",
+        "_amount": 100
+      },
+      "event": "Transfer",
+      "logIndex": 0,
+      "transactionIndex": 0,
+      "transactionHash": "0x188c04ac9d1eca78b72739a0ab46ab3d2f7538530f1a651d3e0da78b8728e6b2",
+      "address": "0xCA954a230176E8EE83a2a4e24140264Ffd74EA5C",
+      "blockHash": "0x4571d8bafbe176994266796daa7289fac3e205f6c594ae158e295c08505a1442",
+      "blockNumber": 5
+    }
+  ],
+  "purchaseEvents": [
+    {
+      "args": {
+        "buyer": "0xCE0453652a2B46f157200b83aE09A3D476876060",
+        "_amount": 5
+      },
+      "event": "Purchase",
+      "logIndex": 0,
+      "transactionIndex": 0,
+      "transactionHash": "0xd431eec134237e30bc90cbed8a8967ce40ffddbad3d5ead6f39f11bb9e5ab272",
+      "address": "0xCA954a230176E8EE83a2a4e24140264Ffd74EA5C",
+      "blockHash": "0xd00fb76cb0ac498d0834701d53f95d7a3e0062c8fee5a00f97d74100b00aedf0",
+      "blockNumber": 3
+    }
+  ],
+  "burnEvents": [
+    {
+      "args": {
+        "_amount": 22
+      },
+      "event": "Burn",
+      "logIndex": 0,
+      "transactionIndex": 0,
+      "transactionHash": "0x8543336fc8fa5c80f1228fbe33af86ebe85495bb9d97c0513502fec389ad6338",
+      "address": "0xCA954a230176E8EE83a2a4e24140264Ffd74EA5C",
+      "blockHash": "0xf4f0db692bb1dfd520abea8e710893c4061fef3c1d97d579ef2d5576700527e7",
+      "blockNumber": 2
+    }
+  ]
+}
