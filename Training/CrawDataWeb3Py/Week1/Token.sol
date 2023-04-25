@@ -38,6 +38,10 @@ contract Week2 is Owner{
         balances[owner] = _totalSupply;
     }
 
+    event Burn(uint256 _amount);
+    event Transfer(address indexed _from, address indexed _to, uint256 _amount);
+    event Purchase(address indexed buyer, uint256 _amount);
+
     function getBalances() public view returns (uint256) {
         return balances[msg.sender];
     }
@@ -51,7 +55,9 @@ contract Week2 is Owner{
         require(balances[owner] >= _amount, "Insufficient balance");
         balances[owner] -= _amount;
         totalSupply -= _amount;
+        emit Burn(_amount);
         return true;
+        
     }
 
     // Transfer tu dia chi A qua dia chi B
@@ -66,7 +72,7 @@ contract Week2 is Owner{
         balances[msg.sender] -= _amount;
         balances[_recipient] += _amount;
 
-        //emit Transfer(msg.sender, _recipient, _amount);
+        emit Transfer(msg.sender, _recipient, _amount);
 
         return true;
     }
@@ -83,7 +89,7 @@ contract Week2 is Owner{
         balances[_from] -= _amount;
         balances[_to] += _amount;
 
-        //emit Transfer(_from, _to, _amount);
+        emit Transfer(_from, _to, _amount);
         return true;
     }
 
@@ -111,5 +117,7 @@ contract Week2 is Owner{
         );
         balances[owner] -= msg.value / tokenPrice;
         balances[msg.sender] += msg.value / tokenPrice;
+        
+        emit Purchase(msg.sender, msg.value / tokenPrice);
     }
 }
